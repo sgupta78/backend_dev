@@ -7,11 +7,11 @@
     "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Shivam Gupta",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2",
     "nodemon": "^3.1.10"
   }
 }

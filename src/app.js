@@ -1,29 +1,15 @@
 const express = require("express");
-
+const connectDB = require("./config/database");
 const app = express();
-const {adminAuth, userAuth} = require("./middlewares/auth");
 
-app.use("/admin",adminAuth);
+connectDB()
+    .then(() => {
+        console.log("Database connection established");
+        app.listen(3000, () => {
+            console.log("app is listning on port 3000");
+        })})
+    .catch((err) => {
+        console.log("Database connection not  established");
+    })
 
-app.get("/admin/getAllData", (req,res)=>{
-    throw new Error("this is my error");
-    res.send("Sent data !");
-})
 
-app.get("/admin/deleteData", (req,res)=>{
-    res.send("data deleted!");
-})
-
-app.get("/user/getData", userAuth, (req,res)=>{
-    res.send("user data sent!")
-
-})
-
-app.use("/", (err,req,res, next) => {
-    console.log(err);
-    res.status(500).send("something went wrong!");
-
-})
-app.listen(3000, () => {
-    console.log("app is listning on port 3000");
-})
