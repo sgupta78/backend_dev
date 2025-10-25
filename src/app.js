@@ -6,7 +6,7 @@ const {adminAuth, userAuth} = require("./middlewares/auth");
 app.use("/admin",adminAuth);
 
 app.get("/admin/getAllData", (req,res)=>{
-    throw new Error;
+    throw new Error("this is my error");
     res.send("Sent data !");
 })
 
@@ -19,8 +19,8 @@ app.get("/user/getData", userAuth, (req,res)=>{
 
 })
 
-app.use("/", (err,req,res,next ) => {
-    console.log(err.stack);
+app.use("/", (err,req,res, next) => {
+    console.log(err);
     res.status(500).send("something went wrong!");
 
 })
